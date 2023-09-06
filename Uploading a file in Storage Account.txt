@@ -1,0 +1,20 @@
+Connect-AzAccount
+
+$AccountName = "internstoreapp"
+$ResourceGroupName="Masterclass-pjk"
+$Location = "North Europe"
+
+$ContainerName="data"
+
+$StorageAccount=Get-AzStorageAccount -Name $AccountName -ResourceGroupName $ResourceGroupName
+
+New-AzStorageContainer -Name $ContainerName -Context $StorageAccount.Context `
+-Permission Blob
+
+$BlobObject=@{
+    FileLocation="C:\Users\jknwo\sample.txt"
+    ObjectName ="sample.txt"
+}
+
+Set-AzStorageBlobContent -Context $StorageAccount.Context -Container $ContainerName `
+-File $BlobObject.FileLocation -Blob $BlobObject.ObjectName

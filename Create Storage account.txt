@@ -1,0 +1,11 @@
+Connect-AzAccount
+$AccountName = "internstoreapp"
+$AccountKind="StorageV2"
+$AccountSKU="Standard_LRS"
+$ResourceGroupName="Masterclass-pjk"
+$Location = "North Europe"
+
+$StorageAccount = New-AzStorageAccount -ResourceGroupName $ResourceGroupName -Name $AccountName `
+-Location $Location -Kind $AccountKind -SkuName $AccountSKU
+
+$StorageAccount

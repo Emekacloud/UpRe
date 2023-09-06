@@ -1,0 +1,8 @@
+Connect-AzAccount
+# Define the storage account and container name
+$storageAccountName = "internstoreapp"
+$containerName = "data"
+$blobName = "sample.txt"  # Name of the blob file to delete
+
+# Remove the blob file from the container
+Remove-AzStorageBlob -Context (Get-AzStorageAccount -ResourceGroupName "Masterclass-pjk" -Name $storageAccountName).Context -Container $containerName -Blob $blobName
